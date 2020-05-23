@@ -1,0 +1,26 @@
+plugins {
+	id 'java'
+	id 'application'	/* Needed for mainClassName property, also brings in the 'run' task */
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}
+	}
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'Assign2'
+	}
+}
+
+run {   /* Run with: gradle run -PrunArgs="arg1 arg2 arg3" */
+	if (project.hasProperty('runArgs')) {
+		args project.getProperty('runArgs').split()
+	}
+}
+
+mainClassName = 'Assign2'
